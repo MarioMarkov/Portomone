@@ -2,6 +2,7 @@ const express = require('express');
 const Person = require('../models/Person');
 const router = express.Router();
 
+// tuk sme na /persons
 
 //get all persons
 router.get('/', (req, res)=>{
