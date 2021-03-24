@@ -1,12 +1,13 @@
 const express = require('express');
+const Expense = require('../models/Expense');
 const Person = require('../models/Person');
 const router = express.Router();
 
 // tuk sme na /persons
 
 //get all persons
-router.get('/', (req, res)=>{
-    res.render('persons/index')
+router.get('/', async(req, res)=>{
+    res.render('persons/index',{persons: await Person.find({}),expenses: await Expense.find({})})
 })
 
 // get add new person

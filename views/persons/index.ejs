@@ -1,1 +1,7 @@
-<p>persons here</p>
+<h2>All Persons :</h2><ul>
+    <% persons.forEach(person =>{ %> 
+        <li>
+            <div><%= person.name %> Expenses Cost: <%= person.expensesCost %> </div>
+        </li>
+    <% })  %> 
+</ul>

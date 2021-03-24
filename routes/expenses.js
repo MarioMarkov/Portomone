@@ -20,8 +20,14 @@ router.post('/',async (req,res)=>{
             category:req.body.category,
             person:req.body.person
         })
-        
+
+    const person = await Person.findById(expense.person)
+    person.expensesCost += expense.cost;
+  
+    
+
     try {
+        await person.save();
         const newExpense = await expense.save();
         res.redirect('/expenses')
         

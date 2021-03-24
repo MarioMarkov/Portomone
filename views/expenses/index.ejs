@@ -2,6 +2,12 @@
     <% expenses.forEach(expense =>{ %> 
         <li>
             <div><%= expense.title %> </div>
+            <div><% persons.find(p=> { %>
+                <% if(p.id == expense.person){ %> 
+                        <p><%= p.name %> </p>      
+                    <% } %> 
+               <% }) %> 
+            </div>
         </li>
     <% })  %> 
 </ul>
