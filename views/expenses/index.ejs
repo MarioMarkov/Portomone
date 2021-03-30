@@ -2,12 +2,15 @@
     <% expenses.forEach(expense =>{ %> 
         <li>
             <div><%= expense.title %> </div>
-            <div><% persons.find(p=> { %>
+            <span><% persons.find(p=> { %>
                 <% if(p.id == expense.person){ %> 
-                        <p><%= p.name %> </p>      
+                        <p>Of: <%= p.name %> </p>      
                     <% } %> 
                <% }) %> 
-            </div>
+            </span>
+            <a href="/expenses/<%= expense.id %>">View</a>
+            <a href="/expenses/<%= expense.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm.js',{url:`/expenses/${expense.id}`}) %>
         </li>
     <% })  %> 
 </ul>

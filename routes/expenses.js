@@ -38,7 +38,25 @@ router.post('/',async (req,res)=>{
     })
     }
 })
-// get add new person
+
+//delete expense
+router.delete('/:id',async(req,res)=>{
+    let expense
+    try {
+        expense = await Expense.findById(req.params.id)
+        await expense.remove()
+        res.redirect('/expenses')
+    } catch (err) {
+        if(expense==null){
+            res.redirect('/')
+        }else{
+            res.redirect(`/expenses/${expense.id}`)
+        }
+    }
+})
+
+
+// get add new expense
 router.get('/new',async (req,res)=>{
     res.render('expenses/new',{expense : new Expense(),persons : await Person.find({})})
 })
