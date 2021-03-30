@@ -39,6 +39,41 @@ router.post('/',async (req,res)=>{
     }
 })
 
+//edit expense 
+router.put('/:id',async (req,res)=>{
+    let expense
+    try {
+        expense = await Expense.findById(req.params.id)
+       
+            expense.title= req.body.title,
+            expense.cost=req.body.cost,
+            expense.category=req.body.category,
+            expense.person=req.body.person
+        
+        await expense.save()
+        
+        res.redirect('/expenses')
+    } catch (err) {
+        if(expense==null){
+            res.redirect('/')
+        }else{
+            console.log(err)
+            res.redirect(`/expenses/${expense.id}`)
+        }
+    }
+})
+
+router.get('/:id/edit',async (req,res)=>{
+    try {
+        const expense = await Expense.findById(req.params.id)
+
+        res.render('expenses/edit', {expense : expense, persons:await Person.find({}) })
+        
+    } catch (error) {
+        res.redirect('/expenses')
+    }
+})
+
 //delete expense
 router.delete('/:id',async(req,res)=>{
     let expense

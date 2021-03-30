@@ -29,4 +29,20 @@ router.post('/',async (req,res)=>{
     }
 })
 
+router.delete('/:id',async(req,res)=>{
+    let person
+    try {
+        person = await Person.findById(req.params.id)
+        await person.remove()
+        res.redirect('/persons')
+    } catch (err) {
+        if(person==null){
+            res.redirect('/')
+        }else{
+            res.redirect(`/persons/${person.id}`)
+        }
+    }
+})
+
+
 module.exports = router;

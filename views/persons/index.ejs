@@ -2,6 +2,7 @@
     <% persons.forEach(person =>{ %> 
         <li>
             <div><%= person.name %> Expenses Cost: <%= person.expensesCost %> </div>
+            <%- include('../partials/deleteForm.js',{url:`/persons/${person.id}`}) %>
         </li>
     <% })  %> 
 </ul>
