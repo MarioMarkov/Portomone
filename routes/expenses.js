@@ -8,7 +8,8 @@ const router = express.Router();
 
 //get all expenses
 router.get('/',async (req, res)=>{
-    res.render('expenses/index',{expenses: await Expense.find({}),persons : await Person.find({})})
+    res.json({expenses: await Expense.find({})});
+    //res.render('expenses/index',{,persons : await Person.find({})})
 })
 
 //post new expense
