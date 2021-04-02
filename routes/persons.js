@@ -29,13 +29,25 @@ router.post('/',async (req,res)=>{
     }
 })
 
+//delete person
 router.delete('/:id',async(req,res)=>{
     let person
     try {
         person = await Person.findById(req.params.id)
+        expenses = await Expense.find({});
         await person.remove()
+        console.log(expenses);
+        
+        expenses.forEach(async expense => {
+            
+            if(expense.person ==     req.params.id){
+                console.log(expense.person+" and " +req.params.id)
+                await expense.remove();
+            }
+        });
         res.redirect('/persons')
     } catch (err) {
+        console.log(err);
         if(person==null){
             res.redirect('/')
         }else{

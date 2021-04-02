@@ -1,9 +1,9 @@
 <h3>Add a new Person</h3>
 <form action="/persons" method="POST">
     <label >Name:</label>
-    <input type="text" name="name" value="<%= person.name %>">
+    <input type="text" name="name" value="<%=person.name%>">
     <label >Income:</label>
-    <input type="number" name="income" value="<%= person.income %>">
+    <input type="number" name="income" value="<%=person.income%>">
     <a href="/persons">Cancel</a>
     <button type="submit">Add Person</button>
     
