@@ -1,5 +1,6 @@
 
 import React,{useState,useEffect} from 'react'
+import { ExpenseItem } from './ExpenseItem';
 
 export const Expenses = () => {
 
@@ -20,9 +21,14 @@ export const Expenses = () => {
     
 
     return (
-        <ul>
-            {expenses.map(ex =><li key={ex._id}>{ex.title}</li>   )}
-        </ul>
+         <ul className="collection with-header">
+         <li className='collection-header'>
+           <h4 className='center'>Expenses</h4>
+         </li>
+         {expenses.length===0 ? <p className='center'>No Expenses</p> :
+             expenses.map(ex =><ExpenseItem expense={ex} key={ex._id}/>   )
+           }
+       </ul>
     )
 }
     
