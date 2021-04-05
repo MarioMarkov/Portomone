@@ -3,6 +3,8 @@ import {Expenses} from './components/expenses/Expenses'
 import {Navbar} from './components/layout/Navbar'
 import AddBtn from './components/layout/AddBtn'
 import AddExpenseModal from './components/expenses/AddExpenseModal'
+import {Provider} from 'react-redux';
+import store from './store'
 
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -16,13 +18,15 @@ const  App= () => {
   
   return (
     <>
-    
+    <Provider store={store}>
       <Navbar/>
-      <div className="container">
-      <AddExpenseModal/>
-      <AddBtn/>
-      <Expenses/>
-      </div>
+        <div className="container">
+        <AddExpenseModal/>
+        <AddBtn/>
+        <Expenses/>
+        </div>
+    </Provider>
+     
     </>
   );
 }
