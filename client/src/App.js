@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import {Expenses} from './components/expenses/Expenses'
 import {Navbar} from './components/layout/Navbar'
+import AddBtn from './components/layout/AddBtn'
+import AddExpenseModal from './components/expenses/AddExpenseModal'
+
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css';
@@ -10,11 +13,14 @@ const  App= () => {
     // Init Materialize JS
     M.AutoInit();
   });
+  
   return (
     <>
+    
       <Navbar/>
-
       <div className="container">
+      <AddExpenseModal/>
+      <AddBtn/>
       <Expenses/>
       </div>
     </>
