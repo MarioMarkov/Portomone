@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import {Expenses} from './components/expenses/Expenses'
+import Expenses from './components/expenses/Expenses'
 import {Navbar} from './components/layout/Navbar'
 import AddBtn from './components/layout/AddBtn'
 import AddExpenseModal from './components/expenses/AddExpenseModal'
