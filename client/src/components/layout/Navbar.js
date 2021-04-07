@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
@@ -9,13 +10,13 @@ export const Navbar = () => {
         </a>
         <ul id='nav-mobile' className='right'>
           <li>
-            <a>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
             <a>Dashboards</a>
           </li>
           <li>
-            <a>About</a>
+            <Link to='/about'>About</Link>
           </li>
         </ul>
       </div>

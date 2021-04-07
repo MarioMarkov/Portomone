@@ -27,6 +27,7 @@ const AddExpenseModal = ({ addExpense }) => {
       setTitle('');
       setCost('');
       setCategory('');
+      setPersonID('');
       setIsMade(true);
 
       M.toast({ html: `Expense added` });
@@ -53,17 +54,6 @@ const AddExpenseModal = ({ addExpense }) => {
         <div className='row'>
           <div className='input-field'>
             <input
-              type='text'
-              onChange={(e) => setCategory(e.target.value)}
-              name='category'
-            />
-            <label htmlFor='category'>Expense Category</label>
-          </div>
-        </div>
-
-        <div className='row'>
-          <div className='input-field'>
-            <input
               type='number'
               onChange={(e) => setCost(e.target.value)}
               name='cost'
@@ -73,6 +63,25 @@ const AddExpenseModal = ({ addExpense }) => {
             </label>
           </div>
         </div>
+        <div className='row'>
+          <div className='input-field'>
+            <select
+              name='category'
+              value={category}
+              className='browser-default'
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value='' disabled>
+                Select Category
+              </option>
+              <option value='food'>Food</option>
+              <option value='tech'>Tech</option>
+              <option value='gas'>Gas</option>
+              <option value='bill'>Bill</option>
+            </select>
+          </div>
+        </div>
+
         <div className='row'>
           <div className='input-field'>
             <select

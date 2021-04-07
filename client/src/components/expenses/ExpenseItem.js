@@ -11,13 +11,15 @@ const ExpenseItem = ({ person: { persons }, expense, deleteExpense }) => {
   };
 
   useEffect(() => {
-    persons.map((p) => {
-      if (p._id == expense.person) {
-        setPerson(p);
-      }
-    });
-  }, []);
-  if (person === null) {
+    if (persons !== null) {
+      persons.map((p) => {
+        if (p._id == expense.person) {
+          setPerson(p);
+        }
+      });
+    }
+  }, [person, persons]);
+  if (person === null || persons === null) {
     return <p>Loading...</p>;
   }
   return (
