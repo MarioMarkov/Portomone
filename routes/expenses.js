@@ -13,21 +13,19 @@ router.get('/', async (req, res) => {
 
 //post new expense
 router.post('/', async (req, res) => {
-  console.log(req.body);
-  console.log('body');
   const expense = new Expense({
     title: req.body.title,
     cost: req.body.cost,
     category: req.body.category,
     isMade: req.body.isMade,
-    // person:req.body.person
+    person: req.body.personId,
   });
 
-  // const person = await Person.findById(expense.person)
-  // person.expensesCost += expense.cost;
+  const person = await Person.findById(expense.person);
+  person.expensesCost += expense.cost;
 
   try {
-    //await person.save();
+    await person.save();
     const newExpense = await expense.save();
     res.json(newExpense);
   } catch (error) {

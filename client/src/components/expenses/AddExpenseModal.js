@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import { addExpense } from '../../actions/expenseActions';
+import PeopleSelectOptions from '../people/PeopleSelectOptions';
 
 const AddExpenseModal = ({ addExpense }) => {
   const [title, setTitle] = useState('');
   const [cost, setCost] = useState(0);
   const [category, setCategory] = useState('');
   const [isMade, setIsMade] = useState(true);
+  const [personId, setPersonID] = useState('');
 
   const onSubmit = () => {
-    if (title === '' || cost == 0) {
+    if (title === '' || cost == '') {
       M.toast({ html: 'Please fill the fields' });
     } else {
       const newExpense = {
@@ -18,6 +20,7 @@ const AddExpenseModal = ({ addExpense }) => {
         cost,
         category,
         isMade,
+        personId,
       };
       addExpense(newExpense);
 
@@ -68,6 +71,21 @@ const AddExpenseModal = ({ addExpense }) => {
             <label htmlFor='cost' className='active'>
               Expense Cost
             </label>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='input-field'>
+            <select
+              name='personId'
+              value={personId}
+              className='browser-default'
+              onChange={(e) => setPersonID(e.target.value)}
+            >
+              <option value='' disabled>
+                Select Person
+              </option>
+              <PeopleSelectOptions />
+            </select>
           </div>
         </div>
 

@@ -25,7 +25,6 @@ export default (state = inititalState, action) => {
           (expense) => expense.id !== action.payload
         ),
       };
-
     default:
       return state;
   }

@@ -36,8 +36,6 @@ export const addExpense = (expense) => async (dispatch) => {
 };
 
 export const deleteExpense = (id) => async (dispatch) => {
-  console.log('actions');
-
   try {
     await fetch(`/expenses/${id}`, {
       method: 'DELETE',
